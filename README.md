@@ -8,4 +8,4 @@ Provides enhanced version of some of the constructs available in golang's sync p
 
 Available Constructs:
 1. **Once**  
-Stateful implementation of builtin sync.Once[immutable]. Can be passed to functions and shared between go-routines.
+Stateful implementation of builtin sync.Once[idempotent]. Can be passed to functions and shared between go-routines.
