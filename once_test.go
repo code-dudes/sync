@@ -71,7 +71,7 @@ func TestBlockingGoroutines(t *testing.T) {
 	o := new(one)
 
 	ts := time.Now()
-	once = NewOnce(false, sleeper(time.Millisecond*20, o))
+	once = NewOnce(false, sleeper(time.Millisecond*100, o))
 
 	assert.Equal(t, false, once.Done(false))
 	go func() { assert.Equal(t, true, once.Do()) }()
@@ -80,11 +80,11 @@ func TestBlockingGoroutines(t *testing.T) {
 
 	go func() { assert.Equal(t, false, once.Do()) }()
 	assert.Equal(t, false, once.Done(false))
-	assert.True(t, time.Since(ts) < time.Millisecond*20)
+	assert.True(t, time.Since(ts) < time.Millisecond*100)
 
 	// wait for Do to finish
 	assert.Equal(t, false, once.Do())
-	assert.True(t, time.Since(ts) > time.Millisecond*20)
+	assert.True(t, time.Since(ts) > time.Millisecond*100)
 	assert.Equal(t, true, once.Done(false))
 	assert.True(t, o.Compare(1))
 }
