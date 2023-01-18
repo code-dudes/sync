@@ -18,4 +18,4 @@ jobs:
       - name: Test with race and coverage
         timeout-minutes: 1
         run: |
-          go test -race -covermode=atomic -covermode=atomic
+          go test -race -covermode=atomic
